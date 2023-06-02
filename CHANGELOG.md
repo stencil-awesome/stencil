@@ -1,3 +1,46 @@
+# 🍭 [3.3.0](https://github.com/ionic-team/stencil/compare/v3.2.2...v3.3.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **compiler:** components typedef path aliases ([#4365](https://github.com/ionic-team/stencil/issues/4365)) ([fd63c17](https://github.com/ionic-team/stencil/commit/fd63c1779a2b4889be536e23ad763199f02d861d))
+
+
+### Features
+
+* **node** add support for node v20 ([#4368](https://github.com/ionic-team/stencil/pull/4368)) ([ffe1847](https://github.com/ionic-team/stencil/commit/ffe1847062ccae0e2b525ac290e3ac977e3ad6a3))
+* **testing:** support puppeteer's 'headless': 'new' ([#4356](https://github.com/ionic-team/stencil/issues/4356)) ([79dc015](https://github.com/ionic-team/stencil/commit/79dc0159d216824d623e34f814dfeb32474a1550))
+* **typescript:** upgrade to TypeScript 5 ([#4315](https://github.com/ionic-team/stencil/issues/4315)) ([0b6621f](https://github.com/ionic-team/stencil/commit/0b6621f21634b7498de0666a872ffcacc93fef87))
+
+
+
+## 🏒 [3.2.2](https://github.com/ionic-team/stencil/compare/v3.2.1...v3.2.2) (2023-05-01)
+
+
+### Bug Fixes
+
+* **declarations:** add `onCancel` to dialog attributes ([#4280](https://github.com/ionic-team/stencil/issues/4280)) ([725ff7e](https://github.com/ionic-team/stencil/commit/725ff7e5a4fac5aa5cd0adb263e484f2ada5cc40)), fixes [#4267](https://github.com/ionic-team/stencil/issues/4267)
+* **runtime:** initialize custom elements even when there is no styles ([#4296](https://github.com/ionic-team/stencil/issues/4296)) ([23f1e66](https://github.com/ionic-team/stencil/commit/23f1e66fb1a092266dfd17c31987499b2ece0b0d)), fixes [#4221](https://github.com/ionic-team/stencil/issues/4221)
+* **testing:** jest component disconnected callback ([#4269](https://github.com/ionic-team/stencil/issues/4269)) ([4ec3b69](https://github.com/ionic-team/stencil/commit/4ec3b694454fddfc71bf9999e31e1341e10117e2)), fixes [#4053](https://github.com/ionic-team/stencil/issues/4053)
+
+
+
+## 🎙 [3.2.1](https://github.com/ionic-team/stencil/compare/v3.2.0...v3.2.1) (2023-04-10)
+
+
+### Bug Fixes
+
+* **compiler:** sourcemap for dist-custom-elements generation ([#4200](https://github.com/ionic-team/stencil/issues/4200)) ([62ad269](https://github.com/ionic-team/stencil/commit/62ad269ca34f665e41bce825f54de9f81d5ed4a4))
+* **compiler:** write exports for defineCustomElement typedefs ([#4194](https://github.com/ionic-team/stencil/issues/4194)) ([89cd845](https://github.com/ionic-team/stencil/commit/89cd8456a6d274cb3e74e839c7fde228dcdcabc6))
+* **mock-doc:** add missing properties of object returned by matchMedia ([#2880](https://github.com/ionic-team/stencil/issues/2880)) ([69176f8](https://github.com/ionic-team/stencil/commit/69176f8290767c05206f324bccb5bea2cf780448))
+* **test:** fix infinite loops w/ react and @testing-library/dom ([#4188](https://github.com/ionic-team/stencil/issues/4188)) ([51750a2](https://github.com/ionic-team/stencil/commit/51750a28ece1638dae6bc5c02221d70f485bfb44)), closes [#3434](https://github.com/ionic-team/stencil/issues/3434)
+
+
+## Thanks
+
+🎉 Thanks for @cam-narzt for their contributions! 🎉
+
+
 # 🌷 [3.2.0](https://github.com/ionic-team/stencil/compare/v3.1.0...v3.2.0) (2023-03-14)
 
 

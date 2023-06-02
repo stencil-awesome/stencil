@@ -102,11 +102,13 @@ export const run = async (init: d.CliInitOptions) => {
 
 /**
  * Run a specified task
+ *
  * @param coreCompiler an instance of a minimal, bootstrap compiler for running the specified task
  * @param config a configuration for the Stencil project to apply to the task run
  * @param task the task to run
  * @param sys the {@link CompilerSystem} for interacting with the operating system
  * @public
+ * @returns a void promise
  */
 export const runTask = async (
   coreCompiler: CoreCompiler,
@@ -115,20 +117,11 @@ export const runTask = async (
   sys?: d.CompilerSystem
 ): Promise<void> => {
   const logger = config.logger ?? createLogger();
-  const rootDir = config.rootDir ?? '/';
-  const configSys = sys ?? config.sys ?? coreCompiler.createSystem({ logger });
-  const strictConfig: ValidatedConfig = {
-    ...config,
-    flags: createConfigFlags(config.flags ?? { task }),
-    hydratedFlag: config.hydratedFlag ?? null,
-    logger,
-    outputTargets: config.outputTargets ?? [],
-    packageJsonFilePath: configSys.platformPath.join(rootDir, 'package.json'),
-    rootDir,
-    sys: configSys,
-    testing: config.testing ?? {},
-    transformAliasedImportPaths: config.transformAliasedImportPaths ?? false,
-  };
+  const flags = createConfigFlags(config.flags ?? { task });
+  config.logger = logger;
+  config.flags = flags;
+  config.sys = sys ?? config.sys ?? coreCompiler.createSystem({ logger });
+  const strictConfig: ValidatedConfig = coreCompiler.validateConfig(config, {}).config;
 
   switch (task) {
     case 'build':

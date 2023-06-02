@@ -446,12 +446,17 @@ type RequireFields<T, K extends keyof T> = T & { [P in K]-?: T[P] };
  * Fields in {@link Config} to make required for {@link ValidatedConfig}
  */
 type StrictConfigFields =
+  | 'cacheDir'
+  | 'devServer'
   | 'flags'
   | 'hydratedFlag'
   | 'logger'
   | 'outputTargets'
   | 'packageJsonFilePath'
+  | 'rollupConfig'
   | 'rootDir'
+  | 'srcDir'
+  | 'srcIndexHtml'
   | 'sys'
   | 'testing'
   | 'transformAliasedImportPaths';
@@ -1771,9 +1776,18 @@ export interface TestingConfig extends JestConfig {
   browserWSEndpoint?: string;
 
   /**
-   * Whether to run browser e2e tests in headless mode. Defaults to true.
+   * Whether to run browser e2e tests in headless mode.
+   *
+   * Starting with Chrome v112, a new headless mode was introduced.
+   * The new headless mode unifies the "headful" and "headless" code paths in the Chrome distributable.
+   *
+   * To enable the "new" headless mode, a string value of "new" must be provided.
+   * To use the "old" headless mode, a boolean value of `true` must be provided.
+   * To use "headful" mode, a boolean value of `false` must be provided.
+   *
+   * Defaults to true.
    */
-  browserHeadless?: boolean;
+  browserHeadless?: boolean | 'new';
 
   /**
    * Slows down e2e browser operations by the specified amount of milliseconds.
@@ -2283,6 +2297,17 @@ export type OutputTarget =
   | OutputTargetStats
   | OutputTargetDistTypes;
 
+/**
+ * Our custom configuration interface for generated caching Service Workers
+ * using the Workbox library (see https://developer.chrome.com/docs/workbox/).
+ *
+ * Although we are using Workbox we are unfortunately unable to depend on the
+ * published types for the library because they must be compiled using the
+ * `webworker` lib for TypeScript, which cannot be used at the same time as
+ * the `dom` lib. So as a workaround we maintain our own interface here. See
+ * here to refer to the published version:
+ * https://github.com/DefinitelyTyped/DefinitelyTyped/blob/c7b4dadae5b320ad1311a8f82242b8f2f41b7b8c/types/workbox-build/generate-sw.d.ts#L3
+ */
 export interface ServiceWorkerConfig {
   // https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config
   unregister?: boolean;

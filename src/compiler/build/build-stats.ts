@@ -1,7 +1,6 @@
-import { byteSize, sortBy } from '@utils';
+import { byteSize, isOutputTargetStats, sortBy } from '@utils';
 
 import type * as d from '../../declarations';
-import { isOutputTargetStats } from '../output-targets/output-utils';
 
 /**
  * Generates the Build Stats from the buildCtx. Writes any files to the file system.
@@ -148,6 +147,7 @@ function getComponentsFileMap(config: d.Config, buildCtx: d.BuildCtx) {
       source: relativePath(config, component.sourceFilePath),
       elementRef: component.elementRef,
       componentClassName: component.componentClassName,
+      componentClassTypeParameters: component.componentClassTypeParameters,
       assetsDirs: component.assetsDirs,
       dependencies: component.dependencies,
       dependents: component.dependents,
